@@ -21,7 +21,7 @@ router.post('/', auth, async (req, res) => {
         await record.save();
         res.status(201).send(record);
     } catch (error) {
-        res.status(400).send(error);
+        res.status(400).send({ error: error.message });
     }
 });
 
