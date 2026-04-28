@@ -1,0 +1,16 @@
+{
+  "name": "smart-patient-health-record-system",
+  "version": "1.0.0",
+  "description": "Smart Patient Health Record System - MERN Stack",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "build": "cd client && npm install && npm run build",
+    "install-server": "cd server && npm install",
+    "install-client": "cd client && npm install",
+    "install-all": "npm run install-server && npm run install-client"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

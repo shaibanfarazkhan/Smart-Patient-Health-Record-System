@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
+import API from '../api';
 
 const EmergencyProfile = () => {
     const { id } = useParams();
@@ -12,7 +12,7 @@ const EmergencyProfile = () => {
     useEffect(() => {
         const fetchEmergencyInfo = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/emergency/${id}`);
+                const response = await API.get(`/emergency/${id}`);
                 setUser(response.data);
             } catch (err) {
                 setError('Emergency profile not found or inactive.');

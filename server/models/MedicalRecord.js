@@ -17,8 +17,8 @@ const medicalRecordSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now }
 });
 
-medicalRecordSchema.pre('save', function(next) {
-    if (this.isModified()) {
+medicalRecordSchema.pre('save', function() {
+    if (this.isNew || this.isModified()) {
         const crypto = require('crypto');
         const dataToHash = {
             patientId: this.patientId,
@@ -32,7 +32,6 @@ medicalRecordSchema.pre('save', function(next) {
         };
         this.hash = crypto.createHash('sha256').update(JSON.stringify(dataToHash)).digest('hex');
     }
-    next();
 });
 
 module.exports = mongoose.model('MedicalRecord', medicalRecordSchema);
